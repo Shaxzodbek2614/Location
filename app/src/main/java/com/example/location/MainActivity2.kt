@@ -83,11 +83,12 @@ class MainActivity2 : AppCompatActivity() {
         }
         fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, null)
     }
+    override fun onPause() {
+        super.onPause()
+        stopLocationUpdates()
+    }
 
-
-
-
-
-
-
+    private fun stopLocationUpdates() {
+        fusedLocationProviderClient.removeLocationUpdates(locationCallback)
+    }
 }
